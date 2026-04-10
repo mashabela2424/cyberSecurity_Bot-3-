@@ -27,7 +27,7 @@ namespace CyberSecurirty_awareness_ChatBot_3_
             string project_location = AppDomain.CurrentDomain.BaseDirectory;
 
             Console.WriteLine(project_location);
-             
+
             string updated_path = project_location.Replace("bin\\Debug\\", "");
 
             string full_path = Path.Combine(updated_path, "greeting.wav");
@@ -155,10 +155,31 @@ namespace CyberSecurirty_awareness_ChatBot_3_
                 // Generate response based on user input
                 Respond(input);
             }
-            //
-        }
 
+        }
+        // Handles chatbot responses based on keywords
+        private void Respond(string input)
+        {
+            // Set bot response color
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.Write("Bot: ");
+
+            // Convert input to lowercase for consistent matching
+            string lowerInput = input.ToLower().Trim();
+
+            // Define response patterns (keeping your original responses)
+            var responses = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
+            {
+                ["how are you"] = "I'm great! Thanks for asking",
+                ["purpose"] = "I help you stay safe online by teaching cybersecurity.",
+                ["ask"] = "You can ask about passwords, phishing, and safe browsing.",
+                ["password"] = "Use strong passwords with letters, numbers, and symbols.",
+                ["phishing"] = "Phishing tricks you into giving personal info. Be careful of suspicious emails.",
+                ["safe browsing"] = "Always check for HTTPS and avoid unknown links."
+            };
+
+
+        }
     }
-        }
-        
 
+}
