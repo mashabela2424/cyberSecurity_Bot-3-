@@ -99,7 +99,34 @@ namespace CyberSecurirty_awareness_ChatBot_3_
 
                     // Move to next line after each row
                     Console.WriteLine();
+
+
                 }
             }
+
+        // Prompts user for their name and validates input
+        private void GetUserName()
+        {
+            Console.Write("Enter your name: ");
+            UserName = Console.ReadLine();
+
+            // Ensure name is not empty or whitespace
+            while (string.IsNullOrWhiteSpace(UserName))
+            {
+                Console.Write("Name cannot be empty. Try again: ");
+                UserName = Console.ReadLine();
+            }
+
+            // Display welcome message in green text
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine();//Skip a line
+            Console.WriteLine("******************************************************************");
+            Console.WriteLine($"Welcome to Cybersecurity Awareness ChatBot, {UserName}!");
+            Console.WriteLine("******************************************************************");
+            Console.ResetColor();
+        }
+
+    }
+}
         }
 
