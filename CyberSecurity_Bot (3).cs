@@ -179,7 +179,39 @@ namespace CyberSecurirty_awareness_ChatBot_3_
             };
 
 
+            // Check for matches in order of specificity (longer patterns first to avoid partial matches)
+            var sortedResponses = responses.OrderByDescending(r => r.Key.Length);
+            bool foundMatch = false;
+
+            foreach (var kvp in sortedResponses)
+            {
+                if (lowerInput.Contains(kvp.Key.ToLower()))
+                {
+                    TypeText(kvp.Value);
+                    foundMatch = true;
+                    break;
+                }
+            }
+
+            // Default response if no match found
+            if (!foundMatch)
+            {
+                TypeText("I didn't quite understand that. Could you rephrase");
+            }
+
+            // Reset console color
+            Console.ResetColor();
+        }
+
+        // Displays text with a typing animation effect
+        private void TypeText(string message)
+        {
+            foreach (char c in message)
+            {
+                Console.Write(c);     // Print each character
+                Thread.Sleep(20);     // Delay to simulate typing
+            }
+            Console.WriteLine();      // Move to next line after message
         }
     }
-
 }
