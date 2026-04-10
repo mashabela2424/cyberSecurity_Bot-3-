@@ -125,8 +125,40 @@ namespace CyberSecurirty_awareness_ChatBot_3_
             Console.WriteLine("******************************************************************");
             Console.ResetColor();
         }
+        private void ChatLoop()
+        {
+            while (true)
+            {
+                // Prompt user input in yellow
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.Write(UserName + " : ");
+                Console.ResetColor();
+
+                string input = Console.ReadLine();
+
+                // Validate input
+                if (string.IsNullOrWhiteSpace(input))
+                {
+                    Console.WriteLine("Bot: Please type something," + UserName + ".");
+                    continue;
+                }
+
+                // Convert input to lowercase for easier matching
+                input = input.ToLower();
+
+                // Exit condition
+                if (input.Contains("exit"))
+                {
+                    Console.WriteLine("Bot: Goodbye! Stay safe online, " + UserName + "!");
+                    break;
+                }
+                // Generate response based on user input
+                Respond(input);
+            }
+            //
+        }
 
     }
-}
         }
+        
 
